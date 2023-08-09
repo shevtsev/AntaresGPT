@@ -20,7 +20,7 @@ class TextToImage:
         self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
 
         #Stable diffusion model
-        self.model = keras_cv.models.StableDiffusion(img_width=self.width, img_height=self.height, jit_compile=Trues)
+        self.model = keras_cv.models.StableDiffusion(img_width=self.width, img_height=self.height, jit_compile=True)
 
         #Creating an input field
         self.entry = tk.Entry(self.root, width=50, font=('Times New Roman', 20))
