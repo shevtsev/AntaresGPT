@@ -50,16 +50,17 @@ class TextToImage:
             plt.axis("off")
 
     def print_image(self):
-        images = self.model.text_to_image(self.entry.get(), batch_size=1, num_steps= 15, unconditional_guidance_scale = 7)
-        self.plot_images(images)
-        path = "img1.png"
-        plt.savefig(path, bbox_inches='tight')
-        image = Image.open(path)
-        max_size = (self.width, self.height)
-        image.thumbnail(max_size)
-        photo = ImageTk.PhotoImage(image)
-        self.image_label.config(image=photo)
-        self.image_label.image = photo
+        if self.entry.get().isalpha():
+            images = self.model.text_to_image(self.entry.get(), batch_size=1, num_steps= 15, unconditional_guidance_scale = 7)
+            self.plot_images(images)
+            path = "img1.png"
+            plt.savefig(path, bbox_inches='tight')
+            image = Image.open(path)
+            max_size = (self.width, self.height)
+            image.thumbnail(max_size)
+            photo = ImageTk.PhotoImage(image)
+            self.image_label.config(image=photo)
+            self.image_label.image = photo
 
     def run(self):
         self.root.mainloop()
