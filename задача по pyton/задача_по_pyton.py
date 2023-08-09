@@ -20,7 +20,7 @@ class TextToImage:
         self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
 
         #Stable diffusion model
-        self.model = keras_cv.models.StableDiffusion(img_width=self.width, img_height=self.height)
+        self.model = keras_cv.models.StableDiffusion(img_width=self.width, img_height=self.height, jit_compile=Trues)
 
         #Creating an input field
         self.entry = tk.Entry(self.root, width=50, font=('Times New Roman', 20))
@@ -50,7 +50,7 @@ class TextToImage:
             plt.axis("off")
 
     def print_image(self):
-        images = self.model.text_to_image(self.entry.get(), batch_size=1, num_steps= 1, unconditional_guidance_scale = 16)
+        images = self.model.text_to_image(self.entry.get(), batch_size=1, num_steps= 15, unconditional_guidance_scale = 7)
         self.plot_images(images)
         path = "img1.png"
         plt.savefig(path, bbox_inches='tight')
