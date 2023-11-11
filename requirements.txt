@@ -1,0 +1,4 @@
+openai
+pyTelegramBotAPI
+gigachat
+urllib
